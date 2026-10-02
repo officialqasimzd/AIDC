@@ -1,7 +1,7 @@
 # Preliminary dataset choice
 
-- **Dataset name:**
-- **Source:**
+- **Dataset name:** Plant Shift Log
+- **Source:** Applied Teaching 
 - **Licence or permitted use:**
 - **Data status:** public / simulated / synthetic / restricted / unknown
 - **Unit of observation:**
