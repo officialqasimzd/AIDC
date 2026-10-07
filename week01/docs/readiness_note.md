@@ -36,5 +36,5 @@ For each failure give the exact command and the full error message.
 ## Git evidence
 
 - **Latest commit hash:** `0840b355a71d05114c7614624f08309678cb3d22`
-- **Pushed to the remote?** yes
-- **If no, the access limitation was:**
+- **Pushed to the remote?** No
+- **If no, the access limitation was:** Pushed is not a requirement in week 1. It will be pushded in week 2. 
