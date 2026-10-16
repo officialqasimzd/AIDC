@@ -1,0 +1,25 @@
+# The environment: large, and wrong on every other machine.
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# Credentials. A pushed token is a published token.
+*.env
+.env
+secrets.*
+credentials.*
+*.pem
+*_rsa
+
+# Generated output. The code makes these; storing both invites drift.
+artifacts/*
+!artifacts/.gitkeep
+# Except the three tables the notes cite: they are the evidence, and are handed in.
+!artifacts/scorecard.csv
+!artifacts/spread.csv
+!artifacts/booking_scorecard.csv
+data/processed/*
+!data/processed/.gitkeep

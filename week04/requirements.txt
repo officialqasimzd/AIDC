@@ -1,0 +1,6 @@
+# Week 4 pins every version exactly. That is the lesson: a name is not a
+# version. Regenerate with `python -m pip freeze > requirements.lock` if you
+# want the full transitive list as well.
+pandas==2.2.2
+ipykernel==6.29.5
+pytest==8.3.2
