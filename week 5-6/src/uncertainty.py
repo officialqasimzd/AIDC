@@ -157,7 +157,11 @@ def residual_spread(resid: pd.Series, n_params: int) -> float:
     Raises ValueError if n is not larger than n_params, since the spread is
     then undefined.
     """
-    raise NotImplementedError("TODO 1: drop missing values, then sqrt(sum of squares / (n - n_params))")
+    values = resid.dropna().to_numpy(dtype=float)
+    n = len(values)
+    if n <= n_params:
+        raise ValueError("n must be larger than n_params")
+    return float(np.sqrt(np.sum(values ** 2) / (n - n_params)))
 
 
 
@@ -173,7 +177,11 @@ def lag1_autocorrelation(resid: pd.Series, line_id: pd.Series) -> float:
     and a textbook interval computed as if every hour were independent will
     be too narrow.
     """
-    raise NotImplementedError("TODO 2: shift the residuals by one within each line, then correlate")
+    previous = resid.groupby(line_id).shift(1)
+    pair = pd.concat([resid, previous], axis=1).dropna()
+    if len(pair) < 2:
+        return float("nan")
+    return float(pair.iloc[:, 0].corr(pair.iloc[:, 1]))
 
 
 
@@ -191,4 +199,10 @@ def margin_for_price(train_resid: pd.Series,
 
     Raises ValueError if either price is not positive.
     """
-    raise NotImplementedError("TODO 3: check the prices, then the quantile at price_short / (price_short + price_over)")
+    if price_short <= 0 or price_over <= 0:
+        raise ValueError("prices must be positive")
+    values = train_resid.dropna().to_numpy(dtype=float)
+    if len(values) == 0:
+        return float("nan")
+    quantile = price_short / (price_short + price_over)
+    return float(np.quantile(values, quantile))

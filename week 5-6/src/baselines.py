@@ -129,7 +129,9 @@ def same_hour_yesterday(frame: pd.DataFrame) -> pd.Series:
 
     Return a Series aligned with `frame`, named "same_hour_yesterday".
     """
-    raise NotImplementedError("same_hour_yesterday is your work in this lab")
+    return (frame.groupby("line_id")["energy_kwh"]
+            .shift(23)
+            .rename("same_hour_yesterday"))
 
 
 def mean_absolute_error(actual: pd.Series, predicted: pd.Series) -> float:
@@ -139,7 +141,10 @@ def mean_absolute_error(actual: pd.Series, predicted: pd.Series) -> float:
     is missing are left out rather than counted as zero; a baseline that has
     nothing to say for the first day should not be rewarded for it.
     """
-    raise NotImplementedError("mean_absolute_error is your work in this lab")
+    pair = pd.concat([actual, predicted], axis=1).dropna()
+    if pair.empty:
+        return float("nan")
+    return float((pair.iloc[:, 0] - pair.iloc[:, 1]).abs().mean())
 
 
 def fit_regression(features: pd.DataFrame, target: pd.Series) -> pd.Series:
@@ -154,7 +159,15 @@ def fit_regression(features: pd.DataFrame, target: pd.Series) -> pd.Series:
 
     Rows where any feature or the target is missing must be dropped first.
     """
-    raise NotImplementedError("fit_regression is your work in this lab")
+    pair = pd.concat([features, target.rename(TARGET)], axis=1).dropna()
+    design = np.column_stack([
+        np.ones(len(pair)),
+        pair[features.columns].to_numpy(dtype=float),
+    ])
+    coefficients, *_ = np.linalg.lstsq(
+        design, pair[TARGET].to_numpy(dtype=float), rcond=None
+    )
+    return pd.Series(coefficients, index=["intercept", *features.columns])
 
 
 # ------------------------------------------------------------- reporting
