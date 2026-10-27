@@ -6,12 +6,12 @@ SHA 256: `259f5b2e6d612b81a2989ce06a50c926773ec803a07131ab78ccfed4b60e2ab4`
 
 ## 1. What does it predict?
 
-The model predicts `energy_next`, the energy in kWh that each production line will use during the next hour, for the plant operator at the top of the current hour, as shown by `TARGET` and the next hour shift in `src/baselines.py`.
+The model predicts `energy_next`, the energy in kWh that each production line will use during the next hour, for the plant operator at the top of the current hour, as shown by `TARGET` and the next hour shift in `src/baselines.py`. 
 
 ## 2. What does it beat, and by how much?
 
 The scorecard in `artifacts/scorecard.csv` reports the following results on the same 87 test hours.
-
+  
 Model: naive last hour, average miss 5.29 kWh, hours short 42, hours scored 87.
 
 Model: line mean, average miss 6.52 kWh, hours short 48, hours scored 87.

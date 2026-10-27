@@ -8,10 +8,10 @@ The improved model adds `energy_last_hour` to the Part C features `energy_kwh` a
 
 ## 1. What does the coefficient mean?
 
-The `energy_last_hour` coefficient is 0.243, meaning that one additional kWh in the previous hour is associated with 0.243 additional kWh in the next hour while the other features are held fixed, and this is a measurement rather than a causal claim because operating conditions can affect both hours.
-
+The `energy_last_hour` coefficient is 0.243, meaning that one additional kWh in the previous hour is associated with 0.243 additional kWh in the next hour while the other features are held fixed, and this is a measurement rather than a causal claim because operating conditions can affect both hours. 
+ 
 The added feature improves the test average miss from 5.28 kWh to 5.20 kWh, as shown by the improved model scorecard table printed by the notebook.
-
+ 
 ## 2. How sure is it?
 
 The leave one day out sensitivity range rests on six training days from 12 to 17 January and is not a 95 percent confidence interval.

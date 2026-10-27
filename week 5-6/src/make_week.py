@@ -16,8 +16,8 @@ Usage:
 The file lands in data/raw/, and the SHA-256 is printed so you can record it,
 as you did in Week 3. The same username always produces the same file.
 """
-
-from __future__ import annotations
+ 
+from __future__ import annotations 
 
 import argparse
 import hashlib

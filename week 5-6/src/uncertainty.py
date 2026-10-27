@@ -16,7 +16,7 @@ price; energy booked and not used is paid for anyway. For this lab a kWh short
 costs three times a kWh over. The ratio is illustrative, and it is set in one
 place, PRICE_SHORT and PRICE_OVER below. In the lecture's notation these are
 Cu, the cost per unit of unmet demand, and Co, the cost per unit of excess.
-
+ 
 Six functions are written for you as worked examples. Three are marked TODO
 and are your work in this lab. Run the tests to see which are outstanding:
 
@@ -50,7 +50,7 @@ def add_candidate_features(frame: pd.DataFrame) -> pd.DataFrame:
     - energy_last_hour: the hour before this one, already metered;
     - energy_same_hour_yesterday: next hour's value 24 hours earlier, which is
       23 rows back (Part B's alignment), NaN on the first day.
-
+ 
     The frame must already be sorted by line and time, as load_log leaves it.
     """
     out = frame.copy()

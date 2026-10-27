@@ -16,8 +16,9 @@ Anything that genuinely has to vary can be overridden with an environment
 variable, without editing a line of source:
 
     WEEK0506_DATA_RAW=/mnt/shared/plant python src/make_week.py --student-id your-github-username
-
+ 
 Import it rather than retyping paths:
+
 
     from paths import DATA_RAW, ARTIFACTS
 """
